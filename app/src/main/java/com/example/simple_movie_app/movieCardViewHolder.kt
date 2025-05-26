@@ -8,4 +8,5 @@ import androidx.recyclerview.widget.RecyclerView
 class movieCardViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
     val movieImg : ImageView = itemView.findViewById(R.id.movie_img)
     val movieTitle : TextView = itemView.findViewById(R.id.movie_name)
+    val rank : TextView = itemView.findViewById(R.id.rank)
 }

@@ -1,13 +1,18 @@
 package com.example.simple_movie_app
 
+import MoviesViewModel
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.simple_movie_app.databinding.ActivityHomeBinding
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 class Home : AppCompatActivity() {
     lateinit var binding : ActivityHomeBinding
@@ -16,17 +21,26 @@ class Home : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val movies = ArrayList<movieCardModle>()
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
-        movies.add(movieCardModle(R.drawable.poster1,"Jocker"))
+        val movies = ArrayList<MovieCardModel>()
+
         val adapter = movieCardAdapter(this,movies)
-        val manager = LinearLayoutManager(this)
+        val manager =  GridLayoutManager(this,2)
+        val viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+
+        viewModel.getMovies()
+
+        viewModel.movies.observe(this) { movieList ->
+            if (movieList != null) {
+                movies.clear()
+                movies.addAll(movieList)
+                adapter.notifyDataSetChanged()
+            }
+        }
+
         binding.movieList.adapter = adapter
         binding.movieList.layoutManager = manager
+
+
+
     }
 }

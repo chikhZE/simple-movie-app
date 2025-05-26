@@ -4,10 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class movieCardAdapter(
     val context: Context,
-    val data: ArrayList<movieCardModle>):RecyclerView.Adapter<movieCardViewHolder>() {
+    val data: ArrayList<MovieCardModel>):RecyclerView.Adapter<movieCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): movieCardViewHolder {
         return  movieCardViewHolder(
             LayoutInflater.from(context).inflate(R.layout.movie_card,parent,false)
@@ -19,7 +20,9 @@ class movieCardAdapter(
     }
 
     override fun onBindViewHolder(holder: movieCardViewHolder, position: Int) {
-        holder.movieImg.setImageResource(data[position].movieImg)
-        holder.movieTitle.text = data[position].movieTitle
+        //holder.movieImg.setImageResource(data[position].movieImg)
+        holder.movieTitle.text = data[position].title
+        holder.rank.text = data[position].rank.toString()
+        Picasso.get().load(data[position].image).into(holder.movieImg)
     }
 }
