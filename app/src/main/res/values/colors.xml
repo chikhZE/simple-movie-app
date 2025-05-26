@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent_color">#4C000000</color>
     <color name="main_color">#00142d</color>
+    <color name="secon_color">#153a8b</color>
 </resources>
