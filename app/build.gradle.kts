@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "com.example.simple_movie_app"
     compileSdk = 35
-
+    buildFeatures{
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.simple_movie_app"
         minSdk = 30
