@@ -1,5 +1,6 @@
 package com.example.simple_movie_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
@@ -18,9 +19,10 @@ class MovieInfo : AppCompatActivity() {
         binding = ActivityMovieInfoBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.info.settings.javaScriptEnabled = true
-        binding.info.webViewClient = WebViewClient()
-        binding.info.loadUrl(intent.getStringExtra("link").toString())
-        binding.progressBar2.visibility = View.GONE
+        binding.desc.text = intent.getStringExtra("desc")
+        binding.titleTxt.text = "${intent.getStringExtra("title")}(${intent.getStringExtra("year")})"
+        binding.rank.text = intent.getStringExtra("rank")
+        binding.rate.text = intent.getStringExtra("rate")
+
     }
 }
