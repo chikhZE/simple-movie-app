@@ -4,5 +4,6 @@ data class MovieCardModel(
     val rank: Int,
     val title: String,
     val rating: String,
-    val image: String
+    val image: String,
+    val imdb_link : String
 )

@@ -1,6 +1,8 @@
 package com.example.simple_movie_app
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -27,7 +29,12 @@ class movieCardAdapter(
         holder.rank.text = data[position].rank.toString()
         Picasso.get().load(data[position].image).into(holder.movieImg)
         holder.rating.text = data[position].rating.toString()
+        holder.card.setOnClickListener {
+            val i = Intent(context,MovieInfo::class.java)
+            i.putExtra("link",data[position].imdb_link)
+           context.startActivity(i)
 
+       }
 
     }
 }
