@@ -3,6 +3,8 @@ package com.example.simple_movie_app
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -24,5 +26,8 @@ class movieCardAdapter(
         holder.movieTitle.text = data[position].title
         holder.rank.text = data[position].rank.toString()
         Picasso.get().load(data[position].image).into(holder.movieImg)
+        holder.rating.text = data[position].rating.toString()
+
+
     }
 }
